@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="tui_editor_lang_type">
+		<value xml:lang="ko">ko_KR</value>
+		<value xml:lang="en">en_US</value>
+		<value xml:lang="jp">ja_JP</value>
+		<value xml:lang="zh-CN">zh_CH</value>
+	</item>
+</lang>

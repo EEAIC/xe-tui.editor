@@ -1,0 +1,42 @@
+<load target="bower_components/markdown-it/dist/markdown-it.js"/>
+<load target="bower_components/to-mark/dist/to-mark.js"/>
+
+<load target="bower_components/tui-code-snippet/dist/tui-code-snippet.js"/>
+<load target="bower_components/codemirror/lib/codemirror.js"/>
+<load target="bower_components/highlightjs/highlight.pack.js"/>
+<load target="bower_components/squire-rte/build/squire-raw.js"/>
+
+<load target="bower_components/tui-editor/dist/tui-editor-Editor.js"/>
+
+<load target="bower_components/codemirror/lib/codemirror.css"/>
+<load target="bower_components/highlightjs/styles/github.css"/>
+<load target="bower_components/tui-editor/dist/tui-editor.css"/>
+<load target="bower_components/tui-editor/dist/tui-editor-contents.css"/>
+
+
+<!--// 기본 JS 로드 -->
+<load target="../../tpl/js/editor_common.js" cond="__DEBUG__" />
+<load target="../../tpl/js/editor_common.min.js" cond="!__DEBUG__" />
+
+<!--// 에디터 JS 로드 -->
+<load target="js/xe_textarea.js" />
+
+<!--// 에디터 언어 설정 -->
+<load target="lang/lang.xml"/>
+
+<!--// 에디터 미리보기 설정  -->
+{@$previewStyle='vertical'}
+<!--@if($module_type === 'comment'||Mobile::isMobileCheckByAgent())-->
+    {@$previewStyle='tab'}
+<!--@endif-->
+
+<div class="_tui-editor {$editor_class}">
+    <div id="tuieditor_instance_{$editor_sequence}" data-editor-sequence="{$editor_sequence}" data-editor-primary-key-name="{$editor_primary_key_name}" data-editor-content-key-name="{$editor_content_key_name}">
+    </div>
+</div>
+
+<script>
+//<![CDATA[
+    editorTextarea("{$editor_sequence}", "{$editor_height}px", "{$previewStyle}" ,"{$lang->tui_editor_lang_type}");
+    //]]>
+</script>
