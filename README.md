@@ -1,0 +1,26 @@
+# XE-TOAST UI Editor
+
+TOAST UI Editor 를 XE 환경에서 사용할 수 있도록 만들었습니다.
+
+### XE
+XpressEngine(XE)은 누구나 쉽고 편하고 자유롭게 콘텐츠를 발행을 할 수 있도록 하기 위한 CMS(Content Management System)입니다. 
+
+자세한 내용은 [XE](https://github.com/xpressengine/xe-core)에서 확인하세요.
+
+### TOAST UI Editor
+GFM Markdown WYSIWYG Editor - Productive and Extensible
+
+자세한 내용은 [TOAST UI Editor](https://github.com/nhnent/tui.editor)에서 확인하세요.
+
+## 🔨 Usage
+
+### Skins
+editor 폴더의 Skins 폴더를 프로젝트의 Skins 폴더로 덮어씌우기 하세요.
+
+### Styles
+editor 폴더의 Styles 폴더를 프로젝트의 Styles 폴더로 덮어씌우기 하세요.
+
+XE 홈페이지에서 TOAST UI 에디터와 서식을 사용하세요.
+
+## 📜 License
+This software is licensed under the [MIT](https://github.com/nhnent/tui.editor/blob/master/LICENSE) © [LIFOsitory](https://github.com/LIFOsitory).
