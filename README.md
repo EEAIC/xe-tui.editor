@@ -1,4 +1,6 @@
 # XE-TOAST UI Editor
+![GitHub](https://img.shields.io/github/license/LIFOsitory/xe-tui.editor.svg?style=flat-square)
+![GitHub release](https://img.shields.io/github/release/LIFOsitory/xe-tui.editor.svg?style=flat-square)
 
 TOAST UI Editor 를 XE 환경에서 사용할 수 있도록 만들었습니다.
 
