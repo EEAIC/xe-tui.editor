@@ -4,7 +4,7 @@ function editorTextarea(editor_sequence, editor_height, editor_previewStyle, edi
     var primary_key = textarea.data("editor-primary-key-name");
     var insert_form = textarea.closest("form");
     var content_input = insert_form.find("input[name='" + content_key + "']");
-    
+
 
     // Set editor keys
     editorRelKeys[editor_sequence] = {};
@@ -13,7 +13,7 @@ function editorTextarea(editor_sequence, editor_height, editor_previewStyle, edi
     editorRelKeys[editor_sequence].func = editorGetContent;
 
     insert_form[0].setAttribute('editor_sequence', editor_sequence);
-    
+
     var editor = tui.Editor.factory({
     	el: document.getElementById('tuieditor_instance_' + editor_sequence),
         initialEditType: 'markdown',
@@ -21,14 +21,15 @@ function editorTextarea(editor_sequence, editor_height, editor_previewStyle, edi
         minHeight: editor_height,
         height: 'auto',
         language: editor_language
-       
+
     });
-  
-    editor.setHtml(content_input.val());
+
+    if(content.val()){
+      editor.setHtml(content_input.val());
+    }
     
     // Save edited content
 	insert_form.on("submit", function() {
 		content_input.val(editor.getHtml());
 	});
 }
-
