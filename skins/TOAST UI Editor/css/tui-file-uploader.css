@@ -1,0 +1,21 @@
+.tui-file-uploader .tui-file-uploader-header {
+    margin-top: 5px;
+}
+.tui-file-uploader-area {
+    width: 100%;
+    table-layout: auto;
+}
+
+.tui-has-scroll tbody, .tui-has-scroll thead {
+    width: 100%;
+    
+}
+
+.tui-clearfix {
+    margin-top: 5px;
+}
+
+.tui-clearfix::after { 
+    content: '';
+    display: inline-block;
+    clear: both }
