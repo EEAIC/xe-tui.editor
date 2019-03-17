@@ -30,4 +30,4 @@ editor 폴더의 Styles 폴더를 프로젝트의 Styles 폴더로 덮어씌우�
 XE 홈페이지에서 TOAST UI 에디터와 서식을 사용하세요.
 
 ## 📜 License
-This software is licensed under the [MIT](https://github.com/nhnent/tui.editor/blob/master/LICENSE) © [LIFOsitory](https://github.com/LIFOsitory).
+This software is licensed under the [MIT](https://github.com/LIFOsitory/xe-tui.editor/blob/master/LICENSE) © [LIFOsitory](https://github.com/LIFOsitory).
