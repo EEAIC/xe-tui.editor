@@ -21,6 +21,18 @@
 <!--// 에디터 JS 로드 -->
 <load target="js/xe_textarea.js" />
 
+<!--// 업로더 JS 로드  -->
+<block cond="$allow_fileupload">
+    <load target="bower_components/tui-file-uploader/dist/tui-file-uploader.css" />
+    <load target="css/tui-file-uploader.css" />
+    <load target="bower_components/tui-file-uploader/dist/tui-file-uploader.js"/>
+    <load target="js/xe_uploader.js" />
+</block>
+
+
+<load target="css/service.css" />
+<load target="css/tui-example-style.css" />
+
 <!--// 에디터 언어 설정 -->
 <load target="lang/lang.xml"/>
 
@@ -30,13 +42,45 @@
     {@$previewStyle='tab'}
 <!--@endif-->
 
+<!--// 업로더 스타일 설정  -->
+{@$fileUploadView='table'}
+<!--@if($module_type === 'comment'||Mobile::isMobileCheckByAgent())-->
+    {@$fileUploadView='simple'}
+<!--@endif-->
+
 <div class="_tui-editor {$editor_class}">
     <div id="tuieditor_instance_{$editor_sequence}" data-editor-sequence="{$editor_sequence}" data-editor-primary-key-name="{$editor_primary_key_name}" data-editor-content-key-name="{$editor_content_key_name}">
+    </div>
+    <div id="fileUploader_{$editor_sequence}" class="fileUploader" cond="$allow_fileupload"><!--File upload zone-->
+        <div id="uploader" class="tui-file-uploader">
+        <!--@if($module_type === 'comment'||Mobile::isMobileCheckByAgent())-->
+            <include target="uploader_simple.html" />
+        <!--@else-->
+            <include target="uploader_table.html" />
+        <!--@end-->
+        </div>
     </div>
 </div>
 
 <script>
-//<![CDATA[
-    editorTextarea("{$editor_sequence}", "{$editor_height}px", "{$previewStyle}" ,"{$lang->tui_editor_lang_type}");
-    //]]>
+    editorTextarea({
+        editor_sequence : "{$editor_sequence}", 
+        editor_height : "{$editor_height}px", 
+        editor_previewStyle : "{$previewStyle}" ,
+        editor_language : "{$lang->tui_editor_lang_type}"
+    }); 
+    editorUploadInit({
+        "editorSequence" : "{$editor_sequence}",
+        "upload_target_srl" : "{$upload_target_srl}",
+        "sessionName" : "{session_name()}",
+        "allowedFileSize" : "{$file_config->allowed_filesize}",
+        "allowedFileTypes" : "{$file_config->allowed_filetypes}",
+        "allowedFileTypesDescription" : "{$file_config->allowed_filetypes}",
+        "insertedFiles" : "{(int)$files_count}",
+        "replaceButtonID" : "swfUploadButton{$editor_sequence}",
+        "fileListAreaID" : "uploaded_file_list_{$editor_sequence}",
+        "previewAreaID" : "preview_uploaded_{$editor_sequence}",
+        "uploaderStatusID" : "uploader_status_{$editor_sequence}",
+        "fileUploadView" : "{$fileUploadView}"
+    });
 </script>

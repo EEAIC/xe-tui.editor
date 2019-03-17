@@ -1,0 +1,16 @@
+<div class="tui-file-uploader-header">
+    <div class="tui-btn-area">
+        <button type="button" class="tui-btn tui-btn-cancel">Remove</button>
+        <label class="tui-btn tui-btn-upload">
+            <span class="tui-btn-txt">Add files</span>
+            <input type="file" id="Filedata" name="Filedata" class="tui-input-file" data-editor-sequence="{$editor_sequence}" data-auto-upload="true">
+            <input type="hidden" name="editor_sequence" value="{$editor_sequence}">
+            <input type="hidden" name="upload_target_srl" value="{$upload_target_srl}">
+        </label>
+    </div>
+</div>
+<div class="tui-js-file-uploader-list tui-js-file-uploader-dropzone tui-file-uploader-area tui-has-scroll">
+    <div class="tui-dropzone-contents">
+        <span class="tui-dropzone-msg">Drop files here.</span>
+    </div>
+</div>
