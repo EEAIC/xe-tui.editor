@@ -14,6 +14,11 @@ GFM Markdown WYSIWYG Editor - Productive and Extensible
 
 자세한 내용은 [TOAST UI Editor](https://github.com/nhnent/tui.editor)에서 확인하세요.
 
+### TOAST UI Component : File Uploader
+Component that transfers local files to the server
+
+자세한 내용은 [TOAST UI File Uploader](https://github.com/nhnent/tui.file-uploader)에서 확인하세요.
+
 ## 🔨 Usage
 
 ### Skins
