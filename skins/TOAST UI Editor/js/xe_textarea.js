@@ -34,7 +34,16 @@ function editorTextarea(cfg) {
     
     // Save edited content
 	insert_form.on("submit", function() {
-		content_input.val(editor.getHtml());
-	});
+        content_input.val(editor.getHtml());
+        if (arr_file_srl[cfg.editor_sequence]) {
+            var params = {
+                file_srls       : arr_file_srl[cfg.editor_sequence].join(','),
+                editor_sequence : cfg.editor_sequence
+            }
+
+            // Requset file delete
+            exec_xml("file","procFileDelete", params);
+        }
+    });
 }
 
