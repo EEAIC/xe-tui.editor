@@ -76,20 +76,21 @@
         editor_sequence : "{$editor_sequence}", 
         editor_height : "{$editor_height}px", 
         editor_previewStyle : "{$previewStyle}" ,
-        editor_language : "{$lang->tui_editor_lang_type}"
-    }); 
+        editor_language : "{$lang->tui_editor_lang_type}",
+        upload_target_srl : "{$upload_target_srl}",
+        sessionName : "{session_name()}",
+        allowedFileSize : "{$file_config->allowed_filesize}",
+        allowedFileTypes : "{$file_config->allowed_filetypes}",
+        allowedFileTypesDescription : "{$file_config->allowed_filetypes}",
+        insertedFiles : "{(int)$files_count}",
+        replaceButtonID : "swfUploadButton{$editor_sequence}",
+        fileListAreaID : "uploaded_file_list_{$editor_sequence}",
+        previewAreaID : "preview_uploaded_{$editor_sequence}",
+        uploaderStatusID : "uploader_status_{$editor_sequence}",
+        fileUploadView : "{$fileUploadView}",
+        allow_fileupload : "{$allow_fileupload}"
+    });
     editorUploadInit({
-        "editor_sequence" : "{$editor_sequence}",
-        "upload_target_srl" : "{$upload_target_srl}",
-        "sessionName" : "{session_name()}",
-        "allowedFileSize" : "{$file_config->allowed_filesize}",
-        "allowedFileTypes" : "{$file_config->allowed_filetypes}",
-        "allowedFileTypesDescription" : "{$file_config->allowed_filetypes}",
-        "insertedFiles" : "{(int)$files_count}",
-        "replaceButtonID" : "swfUploadButton{$editor_sequence}",
-        "fileListAreaID" : "uploaded_file_list_{$editor_sequence}",
-        "previewAreaID" : "preview_uploaded_{$editor_sequence}",
-        "uploaderStatusID" : "uploader_status_{$editor_sequence}",
-        "fileUploadView" : "{$fileUploadView}"
+        editor_sequence : "{$editor_sequence}"     
     });
 </script>

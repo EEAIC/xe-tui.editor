@@ -4,6 +4,7 @@
     }
 
     function editorFileUploader(cfg) {
+        var seq = cfg.editor_sequence;
         var request = {
             send: request_uri
                 .setQuery('module', 'file')
@@ -11,14 +12,14 @@
         }
 
         // create FileUploader
-        var uploader = new tui.FileUploader($('#uploader'), {
+        uploader = new tui.FileUploader($('#uploader'), {
             url: {
                 send: request.send,
                 remove: request.send
             },
             isMultiple: false,
             listUI: {
-                type: cfg.fileUploadView
+                type: editorRelKeys[seq].cfg.fileUploadView
             }
         });
 
@@ -27,13 +28,13 @@
         var $checkedItemCount = $('#checkedItemCount');
         var $checkedItemSize = $('#checkedItemSize');
         var $removeButton = $('.tui-btn-cancel');
-
+                       
         arr_file_srl = [];
-        arr_file_srl[cfg.editor_sequence] = new Array(); // will be removed File list
+        arr_file_srl[seq] = new Array(); // will be removed File list
         
         disableRemoveButton(1);
         // check attached files
-        loadFileList(cfg);
+        loadFileList();
 
         // below service code
         function disableRemoveButton(state) {
@@ -93,8 +94,8 @@
 
         uploader.on('success', function(evt) {
             // 새글 작성인 경우 upload_target_srl 을 input 값에 추가
-            if (!editorRelKeys[cfg.editor_sequence].primary.val()) {
-                editorRelKeys[cfg.editor_sequence].primary.val(evt.upload_target_srl);
+            if (!editorRelKeys[seq].primary.val()) {
+                editorRelKeys[seq].primary.val(evt.upload_target_srl);
             }
             
             // var successCount = evt.success;
@@ -103,16 +104,16 @@
             // $uploadedCount.html(successCount);
             // disableRemoveButton(removeButtonState);
             // setUploadedCountInfo(successCount);
-            reloadFileList(cfg);
+            reloadFileList();
         });
 
         // remove file in simple style
         uploader.on('delete', function(evt) {
 
            
-            arr_file_srl[cfg.editor_sequence].push(evt.idList[0]);
+            arr_file_srl[seq].push(evt.idList[0]);
             // exec_xml("file","procFileDelete", param, function() { });
-            reloadFileList(cfg); 
+            reloadFileList(); 
         });
 
 
@@ -123,28 +124,28 @@
 
             
             for (var i = 0; i < checkedItems.length; i++) {
-                arr_file_srl[cfg.editor_sequence].push(checkedItems[i].id);
+                arr_file_srl[seq].push(checkedItems[i].id);
             }
 
-            reloadFileList(cfg);
+            reloadFileList();
         });
 
-        function reloadFileList(cfg) {            
+        function reloadFileList() {            
             uploader.clear();
-            loadFileList(cfg);
+            loadFileList();
         }
 
-        function loadFileList(cfg) {
+        function loadFileList() {
             var params = {
                 mid : current_mid,
-                file_list_area_id : cfg.fileListAreaID,
-                editor_sequence   : cfg.editor_sequence,
-                upload_target_srl : cfg.upload_target_srl
+                file_list_area_id : editorRelKeys[seq].cfg.fileListAreaID,
+                editor_sequence   : seq,
+                upload_target_srl : editorRelKeys[seq].cfg.upload_target_srl
             };
 
             function on_complete(ret, response_tags) {
                 var files_data =  ret.files.item;               
-                
+                console.log(files_data);
                 if (files_data) {                    
                     if (Array.isArray(files_data)){ // remove multiple file 
                         for (var i = 0; i < files_data.length; i++) {
@@ -152,10 +153,9 @@
                             files_data[i].size = files_data[i].file_size;
                             files_data[i].id = files_data[i].file_srl;
                         }                       
-                        files_data = files_data.filter(item => !(arr_file_srl[cfg.editor_sequence].includes(item.id)));
-                                           
+                        files_data = files_data.filter(item => !(arr_file_srl[seq].includes(item.id)));               
                     } else {
-                        if (!(arr_file_srl[cfg.editor_sequence].includes(files_data.file_srl))) {                                                    
+                        if (!(arr_file_srl[seq].includes(files_data.file_srl))) {                                                    
                             files_data.name = files_data.source_filename;
                             files_data.size = files_data.file_size;
                             files_data.id = files_data.file_srl;
@@ -163,7 +163,6 @@
                             files_data = [];
                         }
                     }
-                  
                     uploader.updateList(files_data);
                 }
 
