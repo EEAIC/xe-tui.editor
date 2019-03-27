@@ -24,17 +24,18 @@ function editorTextarea(cfg) {
         previewStyle: cfg.editor_previewStyle,
         minHeight: cfg.editor_height,
         height: 'auto',
-        language: cfg.editor_language
+        language: cfg.editor_language,
+        exts: ['chart', 'uml', 'table', 'youtube']
     });
 
     // Set initial content
     if(content_input.val()){
-        editor.setHtml(content_input.val());
+        editor.setValue(content_input.val());
     }
     
     // Save edited content
 	insert_form.on("submit", function() {
-        content_input.val(editor.getHtml());
+        content_input.val(editor.getMarkdown());
         if (arr_file_srl[cfg.editor_sequence]) {
             var params = {
                 file_srls       : arr_file_srl[cfg.editor_sequence].join(','),
