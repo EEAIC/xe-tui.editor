@@ -19,6 +19,20 @@ Component that transfers local files to the server
 
 자세한 내용은 [TOAST UI File Uploader](https://github.com/nhnent/tui.file-uploader)에서 확인하세요.
 
+### TOAST UI Editor Extension : chart, uml, table, youtube
+Support TOAST UI Editor Extension
+
+#### Examples and Details
+
+- [chart](https://nhnent.github.io/tui.editor/api/latest/tutorial-example11-chart.html)
+
+- [uml](https://nhnent.github.io/tui.editor/api/latest/tutorial-example08-uml.html)
+
+- [table](https://nhnent.github.io/tui.editor/api/latest/tutorial-example07-table.html)
+
+- [youtube](https://github.com/nhnent/tui.editor/blob/master/docs/writing-your-own-extension.md)
+
+
 ## 🔨 Usage
 
 ### Skins
